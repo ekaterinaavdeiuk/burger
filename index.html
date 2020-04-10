@@ -9,6 +9,10 @@
             margin: 0 auto;
         }
 
+        div {
+            box-sizing: border-box;
+        }
+
         body {
             background: #F6D528;
         }
@@ -22,7 +26,7 @@
         }
 
         .container {
-            width: 1000px;
+            width: 1400px;
             display: flex;
             justify-content: space-between;
             margin-top: 70px;
@@ -47,51 +51,54 @@
 
         .get-topping {
             width: 220px;
-            height: 20px;
+            height: 10px;
             border-radius: 5px;
         }
 
         .bun {
-
             border-radius: 5px;
             background: #E49433;
         }
 
         .cutlet {
-
             border-radius: 5px;
             background: #813923;
         }
 
         .tomato {
             height: 30px;
-
             border-radius: 5px;
-            background: #EE2128;
+            background: #D32701;
         }
 
-
         .button-style {
-            width: 85px;
+            width: 95px;
             height: 30px;
             padding: 2px;
             background: #3491EE;
             color: #F6D528;
             font-weight: bold;
-            font-size: 14px;
+            font-size: 16px;
             border: 0;
             margin: 5px;
             cursor: pointer;
             border-radius: 5px;
+            outline: none;
         }
 
+        .delete {
+            width: 85px;
+            height: 30px;
+            border: 3px solid #E02F89;
+        }
+
+        .delete:hover {
+            background: #E02F89;
+        }
         .button-style:hover {
             border: 3px solid #E02F89;
         }
 
-        .button-style:active {
-            border: 3px solid #E02F89;
-        }
 
         p {
             color: #E02F89;
@@ -102,8 +109,13 @@
         .bun-top {
             border-radius: 133px 134px 0 0;
         }
+
         .price-calories {
             align-self: flex-end;
+            width: 200px;
+        }
+        .none {
+            display: none;
         }
     </style>
 </head>
@@ -112,8 +124,10 @@
     <div class="burger">
         <div class="bun bun-top burger-size"></div>
         <div class="tomato burger-size"></div>
-        <div class="topping"></div>
+        <div class="bacon topping"></div>
+        <div class="salad topping"></div>
         <div class="cutlet burger-size"></div>
+        <div class="cheese topping"></div>
         <div class="bun burger-size"></div>
     </div>
 
@@ -125,14 +139,16 @@
         </div>
         <div class="button-topping">
             <p>Начинка: </p>
-            <button class="cheese button-style">Сыр</button>
-            <button class="salad button-style">Салат</button>
-            <button class="potato button-style">Картофель</button>
+
+            <button class="button-style" id="cheese">Сыр</button>
+            <button class="button-style" id="salad">Салат</button>
+            <button class="button-style" id="bacon">Бекон</button>
+            <button class="button-style delete">Убрать</button>
         </div>
         <div>
             <p>Дополнительно: </p>
-            <button class="button-style">Майонез</button>
-            <button class="button-style">Приправа</button>
+            <button class="button-style mustard">Горчица</button>
+            <button class="button-style ketchup">Кетчуп</button>
         </div>
 
     </div>
