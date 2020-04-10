@@ -2,6 +2,7 @@ class Burger {
     constructor(size, stuffing) {
         this.size = size;
         this.stuffing = stuffing;
+        this.price = []
     }
 
     getSize() {
@@ -13,13 +14,13 @@ class Burger {
             burgerSize.forEach(element => element.style.width = '200px');
             toppingSize.style.width = '210px';
             this.size = 'smallSize';
-            console.log(burger);
+            this.getPrice();
         });
         bigSize.addEventListener('click', () => {
             burgerSize.forEach(element => element.style.width = '300px');
             toppingSize.style.width = '310px';
             this.size = 'bigSize';
-            console.log(burger);
+            this.getPrice();
         })
     }
 
@@ -32,19 +33,19 @@ class Burger {
             topping.classList.add('get-topping');
             topping.style.background = '#FAFF65';
             this.stuffing = 'cheese';
-            console.log(burger);
+            this.getPrice();
         });
         salad.addEventListener('click', () => {
             topping.classList.add('get-topping');
             topping.style.background = '#72C901';
             this.stuffing = 'salad';
-            console.log(burger);
+            this.getPrice();
         });
         potato.addEventListener('click', () => {
             topping.classList.add('get-topping');
             topping.style.background = '#BD7800';
             this.stuffing = 'potato';
-            console.log(burger);
+            this.getPrice();
         });
     }
 
@@ -53,28 +54,29 @@ class Burger {
         let price = document.querySelector('.price');
         switch (this.stuffing) {
             case 'cheese':
-                price.innerText = '10';
-                console.log(1);
+                this.price[0] = 10;
                 break;
             case 'potato':
-                price.innerText = '15';
+                this.price[0] = 15;
                 break;
             case 'salad':
-                price.innerText = '20';
+                this.price[0] = 20;
                 break;
         }
         switch (this.size) {
             case 'smallSize':
-                price.innerText = '50';
+                this.price[1] = 50;
                 break;
             case 'bigSize':
-                price.innerText = '100';
+                this.price[1] = 100;
                 break;
         }
+        price.innerText = `Итого: ${this.price.reduce((accumulator, currentValue) =>
+            accumulator + currentValue, 0)}руб`;
     }
 }
 
-const burger = new Burger();
+const burger = new Burger(0 , 0);
 burger.getSize();
 burger.addTopping();
 burger.getPrice();
