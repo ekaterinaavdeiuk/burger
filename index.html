@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Burger</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0 auto;
+        }
+
+        body {
+            background: #F6D528;
+        }
+
+        button {
+            padding: 0;
+            border: none;
+            font: inherit;
+            color: inherit;
+            background-color: transparent;
+        }
+
+        .container {
+            width: 1000px;
+            display: flex;
+            justify-content: space-between;
+            margin-top: 70px;
+        }
+
+        .burger {
+            width: 500px;
+            height: 500px;
+            align-self: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: #3491EE;
+            border-radius: 5px;
+        }
+
+
+        .burger-size {
+            width: 200px;
+            height: 50px;
+        }
+
+        .get-topping {
+            width: 220px;
+            height: 20px;
+            border-radius: 5px;
+        }
+
+        .bun {
+
+            border-radius: 5px;
+            background: #E49433;
+        }
+
+        .cutlet {
+
+            border-radius: 5px;
+            background: #813923;
+        }
+
+        .tomato {
+            height: 30px;
+
+            border-radius: 5px;
+            background: #EE2128;
+        }
+
+
+        .button-style {
+            width: 85px;
+            height: 30px;
+            padding: 2px;
+            background: #3491EE;
+            color: #F6D528;
+            font-weight: bold;
+            font-size: 14px;
+            border: 0;
+            margin: 5px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .button-style:hover {
+            border: 3px solid #E02F89;
+        }
+
+        .button-style:active {
+            border: 3px solid #E02F89;
+        }
+
+        p {
+            color: #E02F89;
+            font-weight: bold;
+            font-size: 24px;
+        }
+
+        .bun-top {
+            border-radius: 133px 134px 0 0;
+        }
+        .price-calories {
+            align-self: flex-end;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="burger">
+        <div class="bun bun-top burger-size"></div>
+        <div class="tomato burger-size"></div>
+        <div class="topping"></div>
+        <div class="cutlet burger-size"></div>
+        <div class="bun burger-size"></div>
+    </div>
+
+    <div class="buttons">
+        <div class="button-size">
+            <p>Размер: </p>
+            <button class="button-small button-style">Маленький</button>
+            <button class="button-big button-style">Большой</button>
+        </div>
+        <div class="button-topping">
+            <p>Начинка: </p>
+            <button class="cheese button-style">Сыр</button>
+            <button class="salad button-style">Салат</button>
+            <button class="potato button-style">Картофель</button>
+        </div>
+        <div>
+            <p>Дополнительно: </p>
+            <button class="button-style">Майонез</button>
+            <button class="button-style">Приправа</button>
+        </div>
+
+    </div>
+    <div class="price-calories">
+        <p class="price">Цена: </p>
+        <p>Калории: </p>
+    </div>
+</div>
+
+<script src="burger.js"></script>
+</body>
+</html>
