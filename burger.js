@@ -1,7 +1,7 @@
 class Burger {
     constructor() {
         this.size = 0;
-        this.stuffing = [];
+        this.stuffing = ['', '', ''];
         this.sauce = '';
         this.price = [];
         this.calories = []
@@ -33,6 +33,7 @@ class Burger {
     }
 
     addTopping() {
+        console.log(burger);
         let cheese = document.querySelector('.cheese');
         let salad = document.querySelector('.salad');
         let bacon = document.querySelector('.bacon');
@@ -87,19 +88,42 @@ class Burger {
         })
     }
 
-
     getPrice() {
-        console.log(burger);
         let totalPrice = document.querySelector('.price');
-        switch (this.stuffing) {
+        this.price[0] = [0];
+        this.price[1] = 0;
+        this.price[2] = 0;
+        switch (this.stuffing[0]) {
             case 'cheese':
-                this.price[0] = 50;
-                break;
-            case 'bacon':
-                this.price[0] = 65;
+                this.price[0][0] = 50;
                 break;
             case 'salad':
-                this.price[0] = 55;
+                this.price[0][1] = 65;
+                break;
+            case 'bacon':
+                this.price[0][2] = 55;
+                break;
+        }
+        switch (this.stuffing[1]) {
+            case 'cheese':
+                this.price[0][0] = 50;
+                break;
+            case 'salad':
+                this.price[0][1] = 65;
+                break;
+            case 'bacon':
+                this.price[0][2] = 55;
+                break;
+        }
+        switch (this.stuffing[2]) {
+            case 'cheese':
+                this.price[0][0] = 50;
+                break;
+            case 'salad':
+                this.price[0][1] = 65;
+                break;
+            case 'bacon':
+                this.price[0][2] = 55;
                 break;
         }
         switch (this.size) {
@@ -118,21 +142,50 @@ class Burger {
                 this.price[2] = 10;
                 break;
         }
-        totalPrice.innerText = `Итого: ${this.price.reduce((accumulator, currentValue) =>
-            accumulator + currentValue, 0)}руб`;
+        let sumArr = this.price[0].reduce((accumulator, currentValue) =>
+            accumulator + currentValue, 0);
+        totalPrice.innerText = `Итого: ${sumArr + this.price[1] + this.price[2]}руб`;
+        console.log(this.price[1]);
+        console.log(this.price[2]);
+        console.log(sumArr);
     }
 
     getCalories() {
         let allCalories = document.querySelector('.calories');
-        switch (this.stuffing) {
+        this.calories[0] = [0];
+        this.calories[1] = 0;
+        this.calories[2] = 0;
+        switch (this.stuffing[0]) {
             case 'cheese':
-                this.calories[0] = 70;
-                break;
-            case 'bacon':
-                this.calories[0] = 110;
+                this.calories[0][0] = 70;
                 break;
             case 'salad':
-                this.calories[0] = 10;
+                this.calories[0][1] = 10;
+                break;
+            case 'bacon':
+                this.calories[0][2] = 110;
+                break;
+        }
+        switch (this.stuffing[1]) {
+            case 'cheese':
+                this.calories[0][0] = 70;
+                break;
+            case 'salad':
+                this.calories[0][1] = 10;
+                break;
+            case 'bacon':
+                this.calories[0][2] = 110;
+                break;
+        }
+        switch (this.stuffing[2]) {
+            case 'cheese':
+                this.calories[0][0] = 70;
+                break;
+            case 'salad':
+                this.calories[0][1] = 10;
+                break;
+            case 'bacon':
+                this.calories[0][2] = 110;
                 break;
         }
         switch (this.size) {
@@ -151,12 +204,14 @@ class Burger {
                 this.calories[2] = 20;
                 break;
         }
-        allCalories.innerText = `Калории: ${this.calories.reduce((accumulator, currentValue) =>
-            accumulator + currentValue, 0)}ккал`;
+        let sumArr = this.calories[0].reduce((accumulator, currentValue) =>
+            accumulator + currentValue, 0);
+        allCalories.innerText = `Калории: ${sumArr +  this.calories[1] +  this.calories[2]}ккал`;
     }
 
     deleteTopping() {
-        this.addTopping();
+        let totalPrice = document.querySelector('.price');
+        let allCalories = document.querySelector('.calories');
         let cheese = document.querySelector('.cheese');
         let salad = document.querySelector('.salad');
         let bacon = document.querySelector('.bacon');
@@ -180,10 +235,15 @@ class Burger {
                     break;
             }
         });
+        totalPrice.innerText = `Итого: ${this.price.reduce((accumulator, currentValue) =>
+            accumulator + currentValue, 0)}руб`;
+        allCalories.innerText = `Калории: ${this.calories.reduce((accumulator, currentValue) =>
+            accumulator + currentValue, 0)}ккал`;
     }
 
     deleteSauce() {
-        this.addSauce();
+        let totalPrice = document.querySelector('.price');
+        let allCalories = document.querySelector('.calories');
         let deleteButton = document.querySelector('#delete');
         let mustardButton = document.querySelector('.mustard');
         let ketchupButton = document.querySelector('.ketchup');
@@ -192,6 +252,10 @@ class Burger {
             this.calories[2] = 0;
             ketchupButton.style.border = '3px solid transparent';
             mustardButton.style.border = '3px solid transparent';
+            totalPrice.innerText = `Итого: ${this.price.reduce((accumulator, currentValue) =>
+                accumulator + currentValue, 0)}руб`;
+            allCalories.innerText = `Калории: ${this.calories.reduce((accumulator, currentValue) =>
+                accumulator + currentValue, 0)}ккал`;
             console.log(burger);
         });
     }
