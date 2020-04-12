@@ -222,14 +222,17 @@ class Burger {
         deleteButton.addEventListener('click', () => {
             cheese.classList.remove('get-topping');
             cheeseButton.style.border = '3px solid transparent';
+            this.stuffing[0] = '';
             this.price[0][0] = 0;
             this.calories[0][0] = 0;
             salad.classList.remove('get-topping');
             saladButton.style.border = '3px solid transparent';
+            this.stuffing[1] = '';
             this.price[0][1] = 0;
             this.calories[0][1] = 0;
             bacon.classList.remove('get-topping');
             baconButton.style.border = '3px solid transparent';
+            this.stuffing[2] = '';
             this.price[0][2] = 0;
             this.calories[0][2] = 0;
             let arrPrice = this.price[0].reduce((accumulator, currentValue) =>
@@ -250,9 +253,9 @@ class Burger {
         deleteButton.addEventListener('click', () => {
             this.price[2] = 0;
             this.calories[2] = 0;
+            this.sauce = '';
             ketchupButton.style.border = '3px solid transparent';
             mustardButton.style.border = '3px solid transparent';
-
             let arrPriceTopping = this.price[0].reduce((accumulator, currentValue) =>
                 accumulator + currentValue, 0);
             totalPrice.innerText = `Итого: ${arrPriceTopping + this.price[1] + this.price[2]}руб`;
