@@ -206,12 +206,12 @@ class Burger {
         }
         let sumArr = this.calories[0].reduce((accumulator, currentValue) =>
             accumulator + currentValue, 0);
-        allCalories.innerText = `Калории: ${sumArr +  this.calories[1] +  this.calories[2]}ккал`;
+        allCalories.innerText = `Калории: ${sumArr + this.calories[1] + this.calories[2]}ккал`;
     }
 
     deleteTopping() {
-        let totalPrice = document.querySelector('.price');
         let allCalories = document.querySelector('.calories');
+        let totalPrice = document.querySelector('.price');
         let cheese = document.querySelector('.cheese');
         let salad = document.querySelector('.salad');
         let bacon = document.querySelector('.bacon');
@@ -220,25 +220,25 @@ class Burger {
         let baconButton = document.getElementById('bacon');
         let deleteButton = document.querySelector('.delete');
         deleteButton.addEventListener('click', () => {
-            switch (this.stuffing.pop()) {
-                case 'cheese':
-                    cheese.classList.remove('get-topping');
-                    cheeseButton.style.border = '3px solid transparent';
-                    break;
-                case 'salad':
-                    salad.classList.remove('get-topping');
-                    saladButton.style.border = '3px solid transparent';
-                    break;
-                case 'bacon':
-                    bacon.classList.remove('get-topping');
-                    baconButton.style.border = '3px solid transparent';
-                    break;
-            }
+            cheese.classList.remove('get-topping');
+            cheeseButton.style.border = '3px solid transparent';
+            this.price[0][0] = 0;
+            this.calories[0][0] = 0;
+            salad.classList.remove('get-topping');
+            saladButton.style.border = '3px solid transparent';
+            this.price[0][1] = 0;
+            this.calories[0][1] = 0;
+            bacon.classList.remove('get-topping');
+            baconButton.style.border = '3px solid transparent';
+            this.price[0][2] = 0;
+            this.calories[0][2] = 0;
+            let arrPrice = this.price[0].reduce((accumulator, currentValue) =>
+                accumulator + currentValue, 0);
+            totalPrice.innerText = `Итого: ${arrPrice + this.price[1] + this.price[2]}руб`;
+            let arrCalories = this.calories[0].reduce((accumulator, currentValue) =>
+                accumulator + currentValue, 0);
+            allCalories.innerText = `Калории: ${arrCalories + this.calories[1] + this.calories[2]}ккал`;
         });
-        totalPrice.innerText = `Итого: ${this.price.reduce((accumulator, currentValue) =>
-            accumulator + currentValue, 0)}руб`;
-        allCalories.innerText = `Калории: ${this.calories.reduce((accumulator, currentValue) =>
-            accumulator + currentValue, 0)}ккал`;
     }
 
     deleteSauce() {
@@ -252,10 +252,13 @@ class Burger {
             this.calories[2] = 0;
             ketchupButton.style.border = '3px solid transparent';
             mustardButton.style.border = '3px solid transparent';
-            totalPrice.innerText = `Итого: ${this.price.reduce((accumulator, currentValue) =>
-                accumulator + currentValue, 0)}руб`;
-            allCalories.innerText = `Калории: ${this.calories.reduce((accumulator, currentValue) =>
-                accumulator + currentValue, 0)}ккал`;
+
+            let arrPriceTopping = this.price[0].reduce((accumulator, currentValue) =>
+                accumulator + currentValue, 0);
+            totalPrice.innerText = `Итого: ${arrPriceTopping + this.price[1] + this.price[2]}руб`;
+            let arrCalories = this.calories[0].reduce((accumulator, currentValue) =>
+                accumulator + currentValue, 0);
+            allCalories.innerText = `Калории: ${arrCalories + this.calories[1] + this.calories[2]}ккал`;
             console.log(burger);
         });
     }
